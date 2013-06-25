@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="behat.jira.loader.class">RichBrains\BehaveExtension\Gherkin\Loader\Loader</parameter>
+        <parameter key="behat.jira.service.jira.class">RichBrains\BehaveExtension\Service\JiraService</parameter>
+        <parameter key="behat.jira.service.feature_loader.class">RichBrains\BehaveExtension\Service\FeatureLoaderService</parameter>
+        <parameter key="behat.jira.host"></parameter>
+        <parameter key="behat.jira.user"></parameter>
+        <parameter key="behat.jira.password"></parameter>
+		<parameter key="behat.jira.project"></parameter>
+    </parameters>
+
+    <services>
+        <service id="behat.jira.loader" class="%behat.jira.loader.class%">
+            <argument type="service" id="behat.jira.service.feature_loader" />
+            <tag name="gherkin.loader" />
+        </service>
+
+        <service id="behat.jira.service.feature_loader" class="%behat.jira.service.feature_loader.class%">
+            <argument type="service" id="behat.jira.service.jira" />
+            <argument type="service" id="gherkin.parser" />
+            <argument type="string">%behat.jira.feature_field%</argument>
+        </service>
+
+        <service id="behat.jira.service.jira" class="%behat.jira.service.jira.class%">
+            <argument type="string">%behat.jira.host%</argument>
+            <argument type="string">%behat.jira.user%</argument>
+            <argument type="string">%behat.jira.password%</argument>
+            <argument type="string">%behat.jira.project%</argument>
+        </service>
+
+    </services>
+
+</container>

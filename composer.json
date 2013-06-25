@@ -1,0 +1,24 @@
+{
+    "name": "snoopckuu/behave-extension",
+    "type": "library",
+    "description": "Load features for Behat from Jira Behave plugin",
+    "keywords": ["bdd", "behat", "jira", "feature","behave"],
+    "homepage": "http://github.com/snoopckuu/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel Drozdovich",
+            "email": "d.drozdovich@richbrains.net",
+            "role": "developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.6",
+        "behat/behat": ">=2.4.0,<2.5.0-dev",
+        "symfony/config": ">=2.0.0,<2.3.0",
+        "symfony/dependency-injection": ">=2.0.0,<2.3.0"
+    },
+    "autoload": {
+        "psr-0": { "RichBrains\\BehaveExtension": "src/" }
+    }
+}
